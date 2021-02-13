@@ -2,6 +2,7 @@ package tp1;
 
 import java.util.Scanner; //leitura de dados
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Tp1 {
@@ -122,6 +123,7 @@ public class Tp1 {
         	}
     		
     		for (Day day : this.days) {
+    			
     			if (day.temp == this.min)
     				this.mins.add(day);
     		}
@@ -150,12 +152,12 @@ public class Tp1 {
     }
     
     public static class Day{
-    	int day,
-    		temp,
-    		min,
-    		max;
-    	
-    	double median;
+    	int day;
+    		
+    	double  temp,
+    			min,
+    			max,
+    			median;
     	
     	public Day(int day) {
     		this.day=day;
@@ -167,7 +169,7 @@ public class Tp1 {
     	public void take_temp() {
     		scan = new Scanner(System.in);
     		System.out.println("Digite a temperatura do dia " + this.day);
-    		this.temp = scan.nextInt();
+    		this.temp = scan.nextDouble();
     		
     		
     	}
@@ -175,7 +177,6 @@ public class Tp1 {
     
     public static ArrayList<Integer> please_scan(){
     	ArrayList<Integer> lista = new ArrayList<Integer>();
-    	int this_year = 0;
     	System.out.println("Digite o ano(2011~2020):");
  		try{
  			lista.add(scan.nextInt());
@@ -191,7 +192,8 @@ public class Tp1 {
  			callback_menu();
  		}
 
-		if(this_year < 2011 || this_year > 2020) {
+		
+		if(lista.get(0) < 2011 || lista.get(0) > 2020) {
  			System.out.println("Ano não encontrado.");
  			callback_menu();
  		}
@@ -199,7 +201,7 @@ public class Tp1 {
 		return lista;
     }
     
-    public static void case2(int user_year, int user_month) {
+    public static void med_temp(int user_year, int user_month) {
     	
     	
     	for(Year year :year_list) {
@@ -218,11 +220,11 @@ public class Tp1 {
  					System.out.println("Mês não encontrado.");
  					callback_menu();
  				}
- 				callback_menu();
+ 				
  			}
  		}
     }
-    public static void case3(int user_year, int user_month) {
+    public static void min_temp(int user_year, int user_month) {
     	
     	for(Year year :year_list) {
  			if(user_year == year.year) {
@@ -237,7 +239,7 @@ public class Tp1 {
  			}
  		}
     }
-    public static void case4(int user_year, int user_month) {
+    public static void max_temp(int user_year, int user_month) {
     	
     	for(Year year :year_list) {
  			if(user_year == year.year) {
@@ -267,9 +269,10 @@ public class Tp1 {
 		 System.out.println("4. Cálculo da temperatura máxima de um mês");
 		 System.out.println("5. Relatório meteorológico completo\n");
 		 
+		 
+		 int option = scan.nextInt();
 		 ArrayList<Integer> lista = please_scan();
-		 int option = scan.nextInt(),
-			 user_year = lista.get(0),
+		 int user_year = lista.get(0),
 			 user_month = lista.get(1);
 
 		 switch(option) {
@@ -321,30 +324,59 @@ public class Tp1 {
 		 		
 		 		System.out.println("Você escolheu a opção 2\n");
 		 		
-		 		case2(user_year, user_month);
+		 		med_temp(user_year, user_month);
+		 		callback_menu();
 		 		break;
 
 		 	case 3: //		 		calculate min temperature of a specific month of a specific year and say which day(s)
 		 		
 		 		System.out.println("Você escolheu a opção 3\n");
 		 		
-		 		case3(user_year, user_month);
+		 		min_temp(user_year, user_month);
+		 		callback_menu();
 		 		break;
 		 	
 		 	
 		 	case 4: //		 		calculate max temperature of a specific month of a specific year and say which day(s)
 		 		System.out.println("Você escolheu a opção 4\n");
 
-		 		case4(user_year, user_month);
+		 		max_temp(user_year, user_month);
+		 		callback_menu();
 		 		
 		 		break;
 		 	
 		 	case 5:
 		 		System.out.println("Você escolheu a opção 5\n");
 		 		
-		 		case2(user_year, user_month);
-		 		case3(user_year, user_month);
-		 		case4(user_year, user_month);
+		 		
+		 		
+		 		
+		 		
+		 		for(Year year :year_list) {
+		 			if(user_year == year.year) {
+		 				if (year.months[user_month - 1].temp_done) {
+
+		 					year.months[user_month - 1].days.forEach((day) -> System.out.println("O dia " + day.day+"/"+user_month+" teve média"+" "+day.temp +"°C"));
+		 					
+		 					med_temp(user_year, user_month);
+		 					
+		 					double min_temp = year.months[user_month - 1].get_min_temp().get(0).temp;
+		 					System.out.println("Temperatura máxima: "+ min_temp +"°C");
+		 			 		
+		 					double max_temp = year.months[user_month - 1].get_max_temp().get(0).temp;
+		 					System.out.println("Temperatura máxima: "+ max_temp +"°C");
+		 					
+
+		 				}else {
+		 					System.out.println("Não há dados suficientes.");
+		 					callback_menu();
+		 				}
+		 			}
+		 		}
+		 		
+			
+		 		
+		 		break;
 		 	default:
 		 		System.out.println("Erro.");
 		 		break;
@@ -355,7 +387,14 @@ public class Tp1 {
 	
 	
 	public static void main(String[] args){
+		Random r = new Random();
+		double rangeMin=-40,
+				rangeMax=40;
 		
+		for (Day day : year_list[9].months[0].days) {
+			day.temp = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+		}
+		year_list[9].months[0].temp_done = true;
         cli_menu();
         
         }
