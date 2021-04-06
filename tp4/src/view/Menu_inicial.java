@@ -2,7 +2,7 @@ package view;
 
 public class Menu_inicial extends Tela{
 	public Menu_inicial() {
-		botao_menu_s();
+		botao_menu();
 	}
 	
 	public void botao_jogar() {

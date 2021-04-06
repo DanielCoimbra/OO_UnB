@@ -14,8 +14,6 @@ public class Main {
 		start();
 //		Tela tela = new Tela();
 		
-		
-		
 //		Game_over tela_game_over = new Game_over();
 	}
 	
