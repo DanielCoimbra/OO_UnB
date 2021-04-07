@@ -2,7 +2,7 @@ package view;
 
 public class Menu_inicial extends Tela{
 	public Menu_inicial() {
-		botao_menu();
+		super.botao_menu();
 	}
 	
 	public void botao_jogar() {
@@ -10,6 +10,10 @@ public class Menu_inicial extends Tela{
 	}
 	
 	public void botao_hdf() {
+		
+	}
+	
+	public void put_forca() {
 		
 	}
 }

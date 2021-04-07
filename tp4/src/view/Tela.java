@@ -3,20 +3,26 @@ package view;
 import javax.swing.*;
 
 public class Tela{
+	
+	private JFrame tela;
+	
 	public Tela() {
 		bootstrap();
-		
 	}
 	
-	public static JFrame bootstrap() {
-		JFrame tela = new JFrame();
-		tela.setLocation(500,500);
-		tela.setSize(600,400);
-		tela.setLayout(null);
-		tela.setVisible(true);
-		botao_menu(tela);
-		return tela;
-		
+	public void bootstrap() {
+		this.tela = new JFrame();
+		this.tela.setLocation(500,500);
+		this.tela.setSize(600,400);
+		this.tela.setLayout(null);
+		this.tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.tela.setVisible(true);
+		botao_menu(this.tela);
+
+	}
+	
+	public JFrame get_tela() {
+		return this.tela;
 	}
 	
 	public void botao_sair() {
