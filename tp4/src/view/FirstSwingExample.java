@@ -11,14 +11,14 @@ public class FirstSwingExample {
 		
 		
 		f.setTitle("Game Over");
-		f.setSize(600,400);//400 width and 500 height
+		f.setSize(600,400);//600 width and 400 height
 		f.setLocation(500, 500);
 		f.setLayout(null);//using no layout managers
 		f.setVisible(true);//making the frame visible
-		
-		Thread.sleep(10000);
-		
-		f.setSize(1000,1000);
+//		
+//		Thread.sleep(10000);
+//		
+//		f.setSize(1000,1000);
 		
 		JButton b=new JButton("Menu");//creating instance of JButton
 		
@@ -26,6 +26,10 @@ public class FirstSwingExample {
 		b.setLocation(0, 0);
 		
 		f.add(b);//adding button in JFrame
+		
+		JLabel label = new JLabel();
+		label.setBounds(200, 200, 100, 100);
+		label.add(new JIcon());
 	
 	}
 }

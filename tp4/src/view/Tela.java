@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class Tela{
@@ -16,8 +19,10 @@ public class Tela{
 		this.tela.setSize(600,400);
 		this.tela.setLayout(null);
 		this.tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		JPanel p = new JPanel();
+//		this.tela.setContentPane(p);
 		this.tela.setVisible(true);
-		botao_menu(this.tela);
+		botao_menu();
 
 	}
 	
@@ -30,12 +35,19 @@ public class Tela{
 	}
 	public void clica_botao_menu() {
 		
+		Menu_inicial t = new Menu_inicial();
+		this.get_tela().setVisible(false);
 	}
 	
-	public static void botao_menu(JFrame tela) {
+	public void botao_menu() {
 		JButton b=new JButton("MENU");
-		b.setBounds(130,100,100, 40);//x axis, y axis, width, height  
+		b.setBounds(130,100,100, 40);//x axis, y axis, width, height
 		b.setLocation(0, 0);
-		tela.add(b);
+		get_tela().add(b);
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clica_botao_menu();
+			}
+		});
 	}
 }

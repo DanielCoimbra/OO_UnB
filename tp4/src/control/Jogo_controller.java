@@ -2,9 +2,23 @@ package control;
 
 import java.util.Random;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 
 public class Jogo_controller {
+//<<<<<<< Updated upstream
+//=======
+	private ArrayList<String> lista_palavras_disponiveis;
+	private ArrayList<String> mostrador_de_letras;
+	private ArrayList<String> mostrador_de_letras_erradas;
+	private String jogador_da_vez;
+	private String palavra_da_vez;
+	
+//	public void navegar_pagina(Tela tela) {
+//		trocar para essa tela
+//		
+//	}
+//	
+//>>>>>>> Stashed changes
     public static void main(String[] args) throws Exception{
 
         
