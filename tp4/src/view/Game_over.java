@@ -40,6 +40,9 @@ public class Game_over extends Tela{
 	}
 	
 	public void death() {
+		JLabel lblTeste = new JLabel("WASTED bonequinho is dead");
+		lblTeste.setBounds(189, 126, 232, 105);
+		this.get_tela().add(lblTeste);
 //		ImageIcon image = new ImageIcon("/images/forca_-1_vida.png");
 //		JLabel label= new JLabel();
 //		label.setIcon(image);

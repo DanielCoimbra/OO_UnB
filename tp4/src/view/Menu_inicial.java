@@ -8,6 +8,7 @@ import javax.swing.JButton;
 public class Menu_inicial extends Tela{
 	public Menu_inicial() {
 		botao_jogar();
+		botao_creditos();
 	}
 	
 	public void botao_jogar() {
@@ -36,5 +37,25 @@ public class Menu_inicial extends Tela{
 	
 	public void put_forca() {
 		
+	}
+	
+	public void botao_creditos() {
+		
+		JButton b=new JButton("Creditos");//creating instance of JButton
+		
+		b.setBounds(130,100,100, 40);//x axis, y axis, width, height 
+		b.setLocation(500, 0);
+		
+		this.get_tela().add(b);
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clica_botao_creditos();
+			}
+		});
+	}
+	
+	public void clica_botao_creditos() {
+		Creditos t = new Creditos();
+		this.get_tela().setVisible(false);
 	}
 }

@@ -15,7 +15,7 @@ public class Tela{
 	
 	public void bootstrap() {
 		this.tela = new JFrame();
-		this.tela.setLocation(500,500);
+		this.tela.setLocation(500,300);
 		this.tela.setSize(600,400);
 		this.tela.setLayout(null);
 		this.tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
