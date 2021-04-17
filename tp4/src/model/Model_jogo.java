@@ -14,25 +14,21 @@ import control.*;
 import view.*;
 
 public class Model_jogo {
-	public static ArrayList<String> lista_palavras_chave = new ArrayList<String>(); 
-//	nao esquecer de tirar o public 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private static ArrayList<String> lista_palavras_chave = new ArrayList<String>(); 
+
 	private static ArrayList<String> hall_da_fama;
 	private static String palavra_da_vez;
 	private static String DATABASE="Lista.txt";
 	private static Random random = new Random();
+	public static Jogador j = new Jogador();
+	
+	public static void reset_j_lives() {
+		j.vidas = 5;
+	}
+	
+	public static int j_lives() {
+		return j.vidas;
+	}
 	
 	
 	
@@ -121,8 +117,6 @@ public class Model_jogo {
 		for(int i=0;i<p_da_vez().length(); i++) {
 			if (p_da_vez().charAt(i)==letra) {
 				Controller_jogo.mostrar_letra(letra, i);
-			}else {
-				
 			}
 		}
 	}
