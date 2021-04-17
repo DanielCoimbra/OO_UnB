@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.event.ActionEvent;
+import control.*;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -33,9 +34,9 @@ public class Tela{
 	public void botao_sair() {
 		
 	}
-	public void clica_botao_menu() {
+	public void clica_botao_menu() throws Exception {
+		Controller_jogo.navegar_tela(this, 0);
 		
-		Menu_inicial t = new Menu_inicial();
 		this.get_tela().setVisible(false);
 	}
 	
@@ -46,7 +47,12 @@ public class Tela{
 		get_tela().add(b);
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clica_botao_menu();
+				try {
+					clica_botao_menu();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}

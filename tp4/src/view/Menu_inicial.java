@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import control.*;
+
 public class Menu_inicial extends Tela{
 	public Menu_inicial() {
 		botao_jogar();
@@ -21,14 +23,18 @@ public class Menu_inicial extends Tela{
 		this.get_tela().add(b);
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clica_botao_jogar();
+				try {
+					clica_botao_jogar();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
 	
-	public void clica_botao_jogar() {
-		Forca t = new Forca();
-		this.get_tela().setVisible(false);
+	public void clica_botao_jogar() throws Exception {
+		Controller_jogo.navegar_tela(this,1);
 	}
 	
 	public void botao_hdf() {
@@ -49,13 +55,17 @@ public class Menu_inicial extends Tela{
 		this.get_tela().add(b);
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clica_botao_creditos();
+				try {
+					clica_botao_creditos();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
 	
-	public void clica_botao_creditos() {
-		Creditos t = new Creditos();
-		this.get_tela().setVisible(false);
+	public void clica_botao_creditos() throws Exception {
+		Controller_jogo.navegar_tela(this, 3);
 	}
 }

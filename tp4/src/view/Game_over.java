@@ -29,12 +29,17 @@ public class Game_over extends Tela{
 		this.get_tela().add(b);
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				clica_botao_restart();
+				try {
+					clica_botao_restart();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
 	
-	public void clica_botao_restart() {
+	public void clica_botao_restart() throws Exception {
 		Forca t = new Forca();
 		this.get_tela().setVisible(false);
 	}
