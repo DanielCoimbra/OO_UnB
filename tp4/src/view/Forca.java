@@ -21,6 +21,8 @@ public class Forca extends Tela{
 	public void conta_vidas() {
 		JLabel l;
 		l = new JLabel(""+Model_jogo.j_lives());
+		l.setBounds(500,12, 27,25);
+		this.get_tela().add(l);
 	}
 	
 	public void labels(int tamanho_palavra) {

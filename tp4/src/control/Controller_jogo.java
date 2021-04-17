@@ -13,19 +13,20 @@ public class Controller_jogo {
 		Model_jogo.reseta_lista_palavras();
 	}
 	
-	public static void rodada(char letra) {
-		int estado = 4;
-//		int estado = Model_jogo.checa_estado();
-//		if (estado == 0) {
-			
-//		}else if (estado == 1) {
-			
-//		}else if (estado == 2){
-			
-			Model_jogo.sortear_palavra();
-			
-//		}
-	}
+//	public static void rodada(char letra) {
+////		int estado = 4;
+////		int estado = Model_jogo.checa_estado();
+////		if (estado == 0) {
+//			
+////		}else if (estado == 1) {
+//			
+////		}else if (estado == 2){
+//			
+//		Model_jogo.sortear_palavra();
+//		
+//			
+////		}
+//	}
 	
 	public static void checar_letra(char letra) {
 		Model_jogo.checar_letra(letra);
