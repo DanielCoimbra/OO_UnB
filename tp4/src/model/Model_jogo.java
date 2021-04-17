@@ -10,6 +10,9 @@ import java.io.FileReader;
 import java.io.LineNumberReader;
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.swing.JLabel;
+
 import control.*;
 import view.*;
 
@@ -21,6 +24,8 @@ public class Model_jogo {
 	private static String DATABASE="Lista.txt";
 	private static Random random = new Random();
 	public static Jogador j = new Jogador();
+	private static ArrayList<Integer>index_list = new ArrayList<Integer>();
+	private static ArrayList<JLabel>label_list = new ArrayList<JLabel>();
 	
 	public static void reset_j_lives() {
 		j.vidas = 5;
@@ -113,16 +118,21 @@ public class Model_jogo {
 	}
 	
 	public static void checar_letra(char letra) {
-		
+		index_list.clear();
 		for(int i=0;i<p_da_vez().length(); i++) {
 			if (p_da_vez().charAt(i)==letra) {
-				Controller_jogo.mostrar_letra(letra, i);
+				index_list.add(i);
 			}
 		}
+		Controller_jogo.mostrar_letra(letra, index_list);
 	}
 	
 	public static void checa_estado() {
 		
+	}
+	
+	public static ArrayList<JLabel> get_lista_label(){
+		return label_list;
 	}
 	
 }

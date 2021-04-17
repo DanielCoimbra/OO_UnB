@@ -1,8 +1,13 @@
 package control;
+import java.util.ArrayList;
+
+import javax.swing.JLabel;
+
 import model.*;
 import view.*;
 
 public class Controller_jogo {
+	
 	
 	public static void resetar_lista() throws Exception {
 		Model_jogo.reseta_lista_palavras();
@@ -31,8 +36,10 @@ public class Controller_jogo {
 	}
 	
 	
-	public static void mostrar_letra(char letra, int index) {
-		
+	public static void mostrar_letra(char letra, ArrayList<Integer> list) {
+		for(int i = 0 ; i < list.size(); i++) {
+			get_lista_label().get(i).setText(""+letra);
+		}
 	}
 	
 	public static void navegar_tela(int tela) throws Exception {
@@ -66,5 +73,9 @@ public class Controller_jogo {
 	}
 	public static String palavra_da_vez() {
 		return Model_jogo.p_da_vez();
+	}
+	
+	public static ArrayList<JLabel> get_lista_label() {
+		return Model_jogo.get_lista_label();
 	}
 }

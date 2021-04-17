@@ -6,9 +6,13 @@ import java.awt.event.ActionListener;
 import control.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.util.ArrayList;
 
 public class Forca extends Tela{
-	public static Jogador j = new Jogador();
+	
+	
+	
+	
 	public Forca() throws Exception {
 		botoes_letras();
 		Controller_jogo.resetar_lista();
@@ -19,12 +23,13 @@ public class Forca extends Tela{
 	
 	public void conta_vidas() {
 		JLabel l;
-		l = new JLabel(""+j.vida());
+		l = new JLabel(""+Model_jogo.j_lives());
 	}
 	
 	public void labels(int tamanho_palavra) {
 		int counter = 10, distancia = 15, altura = 150;
 		int LIMITE = 560;
+//		lista_label ********************************************************8 nao esquecer o lista estatica
 		JLabel l;
 		for(int i = 0; i<tamanho_palavra; i++) {
 			l = new JLabel("_");
@@ -36,11 +41,18 @@ public class Forca extends Tela{
 				l.setBounds(counter-550, altura+25, 27,25);
 			}
 			counter += distancia;
+			Controller_jogo.get_lista_label().add(l);
 			this.get_tela().add(l);
 		}
 		
 	}
 	
+//	public void change_labels( char letra, ArrayList<Integer> index_list) {
+//		for(int i = 0; i < index_list.size(); i++) {
+//			Controller_jogo.get_lista_label().get(index_list.get(i)).setText(""+letra);
+//		}
+//	}
+//	
 	public String botao_dica() {
 		String dica = "";
 		
@@ -283,8 +295,7 @@ public class Forca extends Tela{
 				Controller_jogo.checar_letra('Z');
 			}
 		});
-		btnNewButton_2_3_2.setBounds(380, 326, 55, 25);
-		this.get_tela().add(btnNewButton_2_3_2);
+
 	}
 	
 }
