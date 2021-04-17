@@ -38,7 +38,7 @@ public class Controller_jogo {
 	
 	public static void mostrar_letra(char letra, ArrayList<Integer> list) {
 		for(int i = 0 ; i < list.size(); i++) {
-			get_lista_label().get(i).setText(""+letra);
+			get_lista_label().get(list.get(i)).setText(Character.toString(letra));
 		}
 	}
 	

@@ -9,10 +9,7 @@ import javax.swing.JLabel;
 import java.util.ArrayList;
 
 public class Forca extends Tela{
-	
-	
-	
-	
+
 	public Forca() throws Exception {
 		botoes_letras();
 		Controller_jogo.resetar_lista();
@@ -27,6 +24,7 @@ public class Forca extends Tela{
 	}
 	
 	public void labels(int tamanho_palavra) {
+		Controller_jogo.get_lista_label().clear();
 		int counter = 10, distancia = 15, altura = 150;
 		int LIMITE = 560;
 //		lista_label ********************************************************8 nao esquecer o lista estatica
@@ -55,8 +53,7 @@ public class Forca extends Tela{
 //	
 	public String botao_dica() {
 		String dica = "";
-		
-		
+
 		return dica;
 	}
 	

@@ -66,6 +66,10 @@ public class Model_jogo {
 		
 	}
 	
+	public static void perdeu() {
+		
+	}
+	
 	public static void add_palavra(String palavra) {
 		
 	}
@@ -124,7 +128,12 @@ public class Model_jogo {
 				index_list.add(i);
 			}
 		}
-		Controller_jogo.mostrar_letra(letra, index_list);
+		if (index_list.size()==0) {
+//			perder vida
+		}else {
+			Controller_jogo.mostrar_letra(letra, index_list);
+		}
+		
 	}
 	
 	public static void checa_estado() {
