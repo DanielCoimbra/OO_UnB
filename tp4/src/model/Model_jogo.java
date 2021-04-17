@@ -14,7 +14,21 @@ import control.*;
 
 
 public class Model_jogo {
-	private static ArrayList<String> lista_palavras_chave;
+	public static ArrayList<String> lista_palavras_chave = new ArrayList<String>(); 
+//	nao esquecer de tirar o public 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static ArrayList<String> hall_da_fama;
 	private static String palavra_da_vez;
 	private static String DATABASE="Lista.txt";
@@ -75,11 +89,11 @@ public class Model_jogo {
 	public static void reseta_lista_palavras() throws Exception {
 		BufferedReader leitorArquivo = new BufferedReader(new FileReader(DATABASE));
 		String linhaLida = leitorArquivo.readLine();
-		int linha = 0;
+		
 		lista_palavras_chave.clear();
 		while (linhaLida != null) { 
 			lista_palavras_chave.add(linhaLida);
-			linha++;
+			
 		}
 		leitorArquivo.close();
 		

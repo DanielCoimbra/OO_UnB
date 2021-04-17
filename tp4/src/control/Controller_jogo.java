@@ -16,12 +16,7 @@ public class Controller_jogo {
 //		}else if (estado == 1) {
 			
 //		}else if (estado == 2){
-			try {
-				Model_jogo.reseta_lista_palavras();
-			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-			}
+			
 			Model_jogo.sortear_palavra();
 			Model_jogo.checar_letra(letra, Model_jogo.p_da_vez());
 //		}
@@ -32,8 +27,8 @@ public class Controller_jogo {
 		
 	}
 	
-	public static void navegar_tela(Tela t, int tela) throws Exception {
-		t.get_tela().setVisible(false);
+	public static void navegar_tela(int tela) throws Exception {
+		
 		switch(tela) {
 		case 0:
 			Menu_inicial menu = new Menu_inicial();
@@ -44,11 +39,12 @@ public class Controller_jogo {
 			break;
 			
 		case 2:
-			Creditos creditos = new Creditos();
+			Game_over go = new Game_over();
 			break;
 			
 		case 3:
-			Game_over go = new Game_over();
+			Creditos creditos = new Creditos();
+			
 			break;
 		case 4:
 			Hall_da_fama hdf = new Hall_da_fama();

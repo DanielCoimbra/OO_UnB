@@ -34,7 +34,8 @@ public class Menu_inicial extends Tela{
 	}
 	
 	public void clica_botao_jogar() throws Exception {
-		Controller_jogo.navegar_tela(this,1);
+		this.get_tela().setVisible(false);
+		Controller_jogo.navegar_tela(1);
 	}
 	
 	public void botao_hdf() {
@@ -66,6 +67,7 @@ public class Menu_inicial extends Tela{
 	}
 	
 	public void clica_botao_creditos() throws Exception {
-		Controller_jogo.navegar_tela(this, 3);
+		this.get_tela().setVisible(false);
+		Controller_jogo.navegar_tela(3);
 	}
 }

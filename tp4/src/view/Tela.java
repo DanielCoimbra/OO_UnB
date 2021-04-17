@@ -35,7 +35,8 @@ public class Tela{
 		
 	}
 	public void clica_botao_menu() throws Exception {
-		Controller_jogo.navegar_tela(this, 0);
+		this.get_tela().setVisible(false);
+		Controller_jogo.navegar_tela(0);
 		
 		this.get_tela().setVisible(false);
 	}
