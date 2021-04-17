@@ -8,7 +8,7 @@ public class Jogador {
 		
 	}
 	
-	public void registrar() {
+	public void botoes_letras() {
 		
 	}
 	
