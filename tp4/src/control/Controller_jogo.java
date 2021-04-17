@@ -18,12 +18,20 @@ public class Controller_jogo {
 //		}else if (estado == 2){
 			
 			Model_jogo.sortear_palavra();
-			Model_jogo.checar_letra(letra, Model_jogo.p_da_vez());
+			
 //		}
 	}
 	
+	public static void checar_letra(char letra) {
+		Model_jogo.checar_letra(letra);
+	}
 	
-	public static void mostrar_palavra() {
+	public static void sortear() {
+		Model_jogo.sortear_palavra();
+	}
+	
+	
+	public static void mostrar_letra(char letra, int index) {
 		
 	}
 	
@@ -53,7 +61,10 @@ public class Controller_jogo {
 	
 	}
 	
-	public static int tamanho_palavra() throws Exception {
+	public static int tamanho_lista_palavra() throws Exception {
 		return Model_jogo.tamanho_lista_palavras();
+	}
+	public static String palavra_da_vez() {
+		return Model_jogo.p_da_vez();
 	}
 }

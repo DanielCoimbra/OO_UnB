@@ -37,8 +37,6 @@ public class Tela{
 	public void clica_botao_menu() throws Exception {
 		this.get_tela().setVisible(false);
 		Controller_jogo.navegar_tela(0);
-		
-		this.get_tela().setVisible(false);
 	}
 	
 	public void botao_menu() {

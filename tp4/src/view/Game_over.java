@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import control.Controller_jogo;
 import view.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,8 +42,8 @@ public class Game_over extends Tela{
 	}
 	
 	public void clica_botao_restart() throws Exception {
-		Forca t = new Forca();
 		this.get_tela().setVisible(false);
+		Controller_jogo.navegar_tela(1);
 	}
 	
 	public void death() {

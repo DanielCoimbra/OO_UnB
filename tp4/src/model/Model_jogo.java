@@ -11,7 +11,7 @@ import java.io.LineNumberReader;
 import java.util.Random;
 import java.util.Scanner;
 import control.*;
-
+import view.*;
 
 public class Model_jogo {
 	public static ArrayList<String> lista_palavras_chave = new ArrayList<String>(); 
@@ -78,8 +78,7 @@ public class Model_jogo {
 	public static int tamanho_lista_palavras() throws Exception {
 		LineNumberReader leitorLinhas = new LineNumberReader(new FileReader(DATABASE));
 		leitorLinhas.skip(Long.MAX_VALUE);
-		int quantPalavras = leitorLinhas.getLineNumber() + 1;
-		System.out.println("Tente a sorte, temos " + quantPalavras + " palavras!!!\n");
+		int quantPalavras = leitorLinhas.getLineNumber();
 		leitorLinhas.close();
 
 		return quantPalavras;
@@ -88,14 +87,16 @@ public class Model_jogo {
 	
 	public static void reseta_lista_palavras() throws Exception {
 		BufferedReader leitorArquivo = new BufferedReader(new FileReader(DATABASE));
-		String linhaLida = leitorArquivo.readLine();
+		String linhaLida;
 		
 		lista_palavras_chave.clear();
-		while (linhaLida != null) { 
+		while ((linhaLida = leitorArquivo.readLine()) != null) { 
 			lista_palavras_chave.add(linhaLida);
+//			System.out.println(linhaLida+"\n");
 			
 		}
 		leitorArquivo.close();
+
 		
 	}
 	
@@ -106,7 +107,7 @@ public class Model_jogo {
 		String palavra_sorteada = lista_palavras_chave.get(indiceSorteado);
 		lista_palavras_chave.remove(indiceSorteado);
 		palavra_da_vez = palavra_sorteada;
-		Controller_jogo.mostrar_palavra();
+//		Controller_jogo.mostrar_palavra();
 	}
 	
 
@@ -115,9 +116,12 @@ public class Model_jogo {
 		return palavra_da_vez;
 	}
 	
-	public static void checar_letra(char letra, String palavra) {
-		for(int i=0;i<palavra.length(); i++) {
-			if (palavra.charAt(i)==letra) {
+	public static void checar_letra(char letra) {
+		
+		for(int i=0;i<p_da_vez().length(); i++) {
+			if (p_da_vez().charAt(i)==letra) {
+				Controller_jogo.mostrar_letra(letra, i);
+			}else {
 				
 			}
 		}
