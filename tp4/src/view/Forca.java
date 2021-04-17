@@ -295,6 +295,8 @@ public class Forca extends Tela{
 				Controller_jogo.checar_letra('Z');
 			}
 		});
+		btnNewButton_2_3_2.setBounds(380, 326, 55, 25);
+		this.get_tela().add(btnNewButton_2_3_2);
 
 	}
 	
