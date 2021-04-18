@@ -1,10 +1,12 @@
 package model;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.LineNumberReader;
+
 import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.LineNumberReader;
@@ -12,10 +14,11 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JLabel;
 import control.*;
+import view.Forca;
 
 public class Model_jogo {
 	private static ArrayList<String> lista_palavras_chave = new ArrayList<String>();
-
+	public static ArrayList<Character> utilizadas = new ArrayList<Character>();
 	private static ArrayList<String> hall_da_fama;
 	private static String palavra_da_vez;
 	private static String estado;
@@ -34,12 +37,7 @@ public class Model_jogo {
 	public static int j_lives() {
 		return j.vidas;
 	}
-	
-	
-	
-	public Model_jogo() {
-		
-	}
+
 	
 //	public ArrayList<Integer> checa_letra(String letra, String palavra){
 //		ArrayList<Integer> lista;
@@ -104,6 +102,9 @@ public class Model_jogo {
 		String linhaLida;
 		
 		lista_palavras_chave.clear();
+		
+		
+		
 		while ((linhaLida = leitorArquivo.readLine()) != null) { 
 			lista_palavras_chave.add(linhaLida);
 
@@ -122,6 +123,7 @@ public class Model_jogo {
 		lista_palavras_chave.remove(indiceSorteado);
 		palavra_da_vez = palavra_sorteada;
 		contador_acertos = 0;
+		utilizadas.clear();
 
 	}
 	
@@ -132,13 +134,14 @@ public class Model_jogo {
 	}
 	
 	public static void checar_letra(char letra){
+		
 		index_list.clear();
 		for(int i=0;i<p_da_vez().length(); i++) {
 			if (p_da_vez().charAt(i)==letra) {
 				acerto(i);
 				if (estado == "ganhou"){//*******************
 //*************** mudar o bug visual Label ao trocar tela Forca
-					break;
+
 				}
 			}
 		}
@@ -149,6 +152,8 @@ public class Model_jogo {
 		}else {
 			Controller_jogo.mostrar_letra(letra, index_list);
 		}
+		utilizadas.add(letra);
+		Controller_jogo.utilizadas(letra);
 	}
 	
 	public static ArrayList<JLabel> get_lista_label(){
@@ -158,6 +163,28 @@ public class Model_jogo {
 	public static JLabel get_label_vidas() {
 		return label_vidas;
 	}
+	
+	public static void add_palavra() throws IOException {
+		 FileWriter fw = new FileWriter(DATABASE, true);
+		    BufferedWriter bw = new BufferedWriter(fw);
+		    bw.newLine();
+		    
+		    String algo="";
+		    Forca.get_f().
+//		    bw.write(algo);
+		    bw.close();
+	}
+	
+	public static Boolean checa_utilizadas(char letra) {
+		for(Character char_: Model_jogo.utilizadas){
+			if (char_ == letra) {
+				return true;
+			}
+		}
+		return false;
+	}
+		
+	
 	
 //	public static void checa_estado() {
 //		 

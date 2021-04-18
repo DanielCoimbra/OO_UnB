@@ -1,4 +1,5 @@
 package control;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -32,6 +33,10 @@ public class Controller_jogo {
 	
 	public static void rodada(char letra) {
 		checar_letra(letra);
+	}
+	
+	public static boolean checa_utilizadas(char letra) {
+		return Model_jogo.checa_utilizadas(letra);
 	}
 	
 	
@@ -119,5 +124,14 @@ public class Controller_jogo {
 	public static void perdeu() {
 		
 		try {Forca.perdeu();} catch (Exception e) {}
+	}
+	
+	public static void add_palavra() {
+		try {Model_jogo.add_palavra();} catch (IOException e) {}
+	}
+	
+	public static void utilizadas(char letra) {
+		Forca.get_f().utilizadas(letra);
+		
 	}
 }

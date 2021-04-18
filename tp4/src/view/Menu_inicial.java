@@ -11,6 +11,7 @@ public class Menu_inicial extends Tela{
 	public Menu_inicial() {
 		botao_jogar();
 		botao_creditos();
+		botao_nova_palavra();
 	}
 	
 	public void botao_jogar() {
@@ -33,6 +34,25 @@ public class Menu_inicial extends Tela{
 		});
 	}
 	
+	public void botao_nova_palavra() {
+		
+		JButton b=new JButton("Adicionar Palavra");//creating instance of JButton
+		
+		b.setBounds(130,100,100, 40);//x axis, y axis, width, height 
+		b.setLocation(250, 0);
+		
+		this.get_tela().add(b);
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {add_palavra();} catch (Exception e) {}
+			}
+		});
+	}
+	
+	public void add_palavra() {
+		Controller_jogo.add_palavra();
+	}
+
 	public void clica_botao_jogar() throws Exception {
 		this.get_tela().setVisible(false);
 		Controller_jogo.resetar_lista();

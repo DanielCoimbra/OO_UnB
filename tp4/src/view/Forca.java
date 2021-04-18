@@ -4,7 +4,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import control.*;
+import model.Model_jogo;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
@@ -55,9 +59,31 @@ public class Forca extends Tela{
 		
 		p.setText(""+Controller_jogo.get_vidas());
 
+		
 		p.setBounds(500,12, 40,40);
 		
 		this.get_tela().add(p);
+	}
+	
+	public void utilizadas(char letra) {
+//		if(!Controller_jogo.checa_utilizadas(letra)) { return;}
+		
+		JTextPane p = new JTextPane();
+		StyledDocument doc = (StyledDocument) p.getDocument();
+
+	    // Create a style object and then set the style attributes
+	    Style style = doc.addStyle("StyleName", null);
+
+	    StyleConstants.setFontSize(style, 15);
+
+	    try {doc.insertString(doc.getLength(), "Some Text", style);} catch (BadLocationException e) {}
+		
+		p.setText(Model_jogo.utilizadas.toString());
+
+		p.setBounds(130,0, 200,40);
+		
+		this.get_tela().add(p);
+		
 	}
 	
 //	public void _vidas() {
