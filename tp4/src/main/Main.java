@@ -17,8 +17,8 @@ import java.util.Random;
 public class Main {
 	private static final String DATABASE = "Lista.txt";
 	public static void start() throws Exception {
-		Tela tela = new Game_over();
-//		Tela tela = new Menu_inicial();
+//		Tela tela = new Game_over();
+		Tela tela = new Menu_inicial();
 
 
 //		***************************************************************************************  
@@ -28,7 +28,9 @@ public class Main {
 //		l.add("ola");
 //		l.add("daniel");
 //		l.add("pedro");
+//		System.out.println(l.size());
 //		l.clear();
+//		System.out.println(l.size());
 //		l.clear();
 //		Random r = new Random();
 //		r.nextInt(10);

@@ -1,27 +1,70 @@
 package view;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 import control.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+
+
 
 public class Forca extends Tela{
-
+	private static Forca f;
+	
 	public Forca() throws Exception {
+		f= this;
 		botoes_letras();
 		Controller_jogo.sortear();
 		Controller_jogo.reseta_vida();
 		labels(Controller_jogo.palavra_da_vez().length());
+		mostra_vida(5);
 
 	}
 	
-	public void conta_vidas() {
-		Controller_jogo.get_label_vidas().setText(String.valueOf(Controller_jogo.get_vidas()));
-		Controller_jogo.get_label_vidas().setBounds(500,12, 27,25);
-		this.get_tela().add(Controller_jogo.get_label_vidas());
+	public static Forca get_f(){
+		return f;
 	}
+	
+	public static void perdeu() throws Exception {
+		f.get_tela().setVisible(false);
+		Controller_jogo.navegar_tela(2);
+	}
+	
+	public static void proxima_rodada() {
+		f.get_tela().setVisible(false);
+		try {Controller_jogo.navegar_tela(1);} catch (Exception e) {}
+	}
+
+	public void mostra_vida(int vida) throws BadLocationException {
+		JTextPane p = new JTextPane();
+		StyledDocument doc = (StyledDocument) p.getDocument();
+
+	    // Create a style object and then set the style attributes
+	    Style style = doc.addStyle("StyleName", null);
+
+	    StyleConstants.setFontSize(style, 30);
+
+	    doc.insertString(doc.getLength(), "Some Text", style);
+		
+		p.setText(""+Controller_jogo.get_vidas());
+
+		p.setBounds(500,12, 40,40);
+		
+		this.get_tela().add(p);
+	}
+	
+//	public void _vidas() {
+//		Controller_jogo.get_label_vidas().setText(String.valueOf(Controller_jogo.get_vidas()));
+//		Controller_jogo.get_label_vidas().setBounds(500,12, 27,25);
+//		this.get_tela().add(Controller_jogo.get_label_vidas());
+//	}
 	
 	
 	
@@ -41,10 +84,7 @@ public class Forca extends Tela{
 			Controller_jogo.get_lista_label().add(l);
 			this.get_tela().add(l);
 		}
-		JLabel label = new JLabel();
-		label.setBounds(499, 12, 27, 27);
-		label.setText(String.valueOf(Controller_jogo.get_vidas()));
-		this.get_tela().add(label);	
+		
 	}
 	
 //	public void change_labels( char letra, ArrayList<Integer> index_list) {
@@ -56,11 +96,6 @@ public class Forca extends Tela{
 	public String botao_dica() {
 		String dica = "";
 		return dica;
-	}
-	
-	public void perdeu() throws Exception {
-		this.get_tela().setVisible(false);
-		Controller_jogo.navegar_tela(2);
 	}
 	
 	public void botoes_letras() {

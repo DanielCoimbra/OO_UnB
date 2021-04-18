@@ -2,6 +2,8 @@ package control;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
 
 import model.*;
 import view.*;
@@ -29,8 +31,12 @@ public class Controller_jogo {
 //	}
 	
 	public static void rodada(char letra) {
-		
 		checar_letra(letra);
+	}
+	
+	
+	public static void ganhou_rodada() {
+		Forca.proxima_rodada();
 	}
 	
 	public static void checar_letra(char letra) {
@@ -98,11 +104,20 @@ public class Controller_jogo {
 	}
 	
 	public static void muda_vidas() {
-		System.out.println("errrou");
-		get_label_vidas().setText(String.valueOf(get_vidas()));
-//				String.valueOf(get_vidas()));
+//		System.out.println("errrou");
+		
+//		get_label_vidas().setText("qualquer");
+//		get_lista_label().get(list.get(i)).setText(Character.toString(letra));
+		try {
+			Forca.get_f().mostra_vida(get_vidas());
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 	
-//	public 
+	public static void perdeu() {
+		
+		try {Forca.perdeu();} catch (Exception e) {}
+	}
 }

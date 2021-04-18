@@ -12,19 +12,20 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JLabel;
 import control.*;
-import view.*;
 
 public class Model_jogo {
 	private static ArrayList<String> lista_palavras_chave = new ArrayList<String>();
 
 	private static ArrayList<String> hall_da_fama;
 	private static String palavra_da_vez;
+	private static String estado;
 	private static String DATABASE="Lista.txt";
 	private static Random random = new Random();
-	public static Jogador j = new Jogador();
+	public static Jogador j = new Jogador(); //PUBLICO **************************************************************************************
 	private static ArrayList<Integer>index_list = new ArrayList<Integer>();
 	private static ArrayList<JLabel>label_list = new ArrayList<JLabel>();
 	private static JLabel label_vidas = new JLabel();
+	public static int contador_acertos; //PUBLICO **************************************************************************************
 	
 	public static void reset_j_lives() {
 		j.vidas = 5;
@@ -47,7 +48,12 @@ public class Model_jogo {
 //		return lista;
 //	}
 
-	public static void acerto() {
+	public static void acerto(int i) {
+		contador_acertos++;
+		index_list.add(i);
+		if (contador_acertos==palavra_da_vez.length()) {
+			ganhou();
+		}
 		
 	}
 	
@@ -57,12 +63,13 @@ public class Model_jogo {
 			try {perdeu();} catch (Exception e) {}
 		}else {
 			}
-			System.out.println(j.vidas);
+//			System.out.println(j.vidas);
 			Controller_jogo.muda_vidas();
 		}
 	
-	public static void ganhou_rodada(){
-		
+	public static void ganhou(){
+		Controller_jogo.ganhou_rodada();
+		estado="ganhou";
 	}
 	
 	public static void zerou() {
@@ -70,7 +77,7 @@ public class Model_jogo {
 	}
 	
 	public static void perdeu() throws Exception {
-		Controller_jogo.navegar_tela(2);
+		Controller_jogo.perdeu();
 	}
 	
 	public static void add_palavra(String palavra) {
@@ -114,6 +121,7 @@ public class Model_jogo {
 		String palavra_sorteada = lista_palavras_chave.get(indiceSorteado);
 		lista_palavras_chave.remove(indiceSorteado);
 		palavra_da_vez = palavra_sorteada;
+		contador_acertos = 0;
 
 	}
 	
@@ -127,7 +135,11 @@ public class Model_jogo {
 		index_list.clear();
 		for(int i=0;i<p_da_vez().length(); i++) {
 			if (p_da_vez().charAt(i)==letra) {
-				index_list.add(i);
+				acerto(i);
+				if (estado == "ganhou"){//*******************
+//*************** mudar o bug visual Label ao trocar tela Forca
+					break;
+				}
 			}
 		}
 		if (index_list.size()==0) {
@@ -137,11 +149,6 @@ public class Model_jogo {
 		}else {
 			Controller_jogo.mostrar_letra(letra, index_list);
 		}
-		
-	}
-	
-	public static void checa_estado() {
-		
 	}
 	
 	public static ArrayList<JLabel> get_lista_label(){
@@ -151,5 +158,9 @@ public class Model_jogo {
 	public static JLabel get_label_vidas() {
 		return label_vidas;
 	}
+	
+//	public static void checa_estado() {
+//		 
+//	}
 	
 }
