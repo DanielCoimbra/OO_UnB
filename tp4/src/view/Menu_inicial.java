@@ -35,6 +35,7 @@ public class Menu_inicial extends Tela{
 	
 	public void clica_botao_jogar() throws Exception {
 		this.get_tela().setVisible(false);
+		Controller_jogo.resetar_lista();
 		Controller_jogo.navegar_tela(1);
 	}
 	

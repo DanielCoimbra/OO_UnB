@@ -28,6 +28,11 @@ public class Controller_jogo {
 ////		}
 //	}
 	
+	public static void rodada(char letra) {
+		
+		checar_letra(letra);
+	}
+	
 	public static void checar_letra(char letra) {
 		Model_jogo.checar_letra(letra);
 	}
@@ -79,4 +84,18 @@ public class Controller_jogo {
 	public static ArrayList<JLabel> get_lista_label() {
 		return Model_jogo.get_lista_label();
 	}
+	
+	public static void reseta_vida() {
+		Model_jogo.reset_j_lives();
+	}
+	
+	public static int get_vidas() {
+		return Model_jogo.j_lives();
+	}
+	
+	public static JLabel get_label_vidas() {
+		return Model_jogo.get_label_vidas();
+	}
+	
+//	public 
 }

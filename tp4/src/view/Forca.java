@@ -1,7 +1,7 @@
 package view;
 
 import java.awt.event.ActionEvent;
-import model.*;
+
 import java.awt.event.ActionListener;
 import control.*;
 import javax.swing.JButton;
@@ -12,39 +12,41 @@ public class Forca extends Tela{
 
 	public Forca() throws Exception {
 		botoes_letras();
-		Controller_jogo.resetar_lista();
 		Controller_jogo.sortear();
 		labels(Controller_jogo.palavra_da_vez().length());
 
 	}
 	
 	public void conta_vidas() {
-		JLabel l;
-		l = new JLabel(""+Model_jogo.j_lives());
-		l.setBounds(500,12, 27,25);
-		this.get_tela().add(l);
+		Controller_jogo.get_label_vidas().setText(String.valueOf(Controller_jogo.get_vidas()));
+		Controller_jogo.get_label_vidas().setBounds(500,12, 27,25);
+		this.get_tela().add(Controller_jogo.get_label_vidas());
+	}
+	
+	public void muda_vidas() {
+		Controller_jogo.get_label_vidas().setText(String.valueOf(Controller_jogo.get_vidas()));
 	}
 	
 	public void labels(int tamanho_palavra) {
 		Controller_jogo.get_lista_label().clear();
 		int counter = 10, distancia = 15, altura = 150;
 		int LIMITE = 560;
-//		lista_label ********************************************************8 nao esquecer o lista estatica
 		JLabel l;
 		for(int i = 0; i<tamanho_palavra; i++) {
 			l = new JLabel("_");
-			
 			if(counter <= LIMITE) {
 				l.setBounds(counter, altura, 27, 25);
-			}else {
-				
+			}else {		
 				l.setBounds(counter-550, altura+25, 27,25);
 			}
 			counter += distancia;
 			Controller_jogo.get_lista_label().add(l);
 			this.get_tela().add(l);
 		}
-		
+		JLabel label = new JLabel();
+		label.setBounds(499, 12, 27, 27);
+		label.setText(String.valueOf(Controller_jogo.get_vidas()));
+		this.get_tela().add(label);	
 	}
 	
 //	public void change_labels( char letra, ArrayList<Integer> index_list) {
@@ -55,8 +57,12 @@ public class Forca extends Tela{
 //	
 	public String botao_dica() {
 		String dica = "";
-
 		return dica;
+	}
+	
+	public void perdeu() throws Exception {
+		this.get_tela().setVisible(false);
+		Controller_jogo.navegar_tela(2);
 	}
 	
 	public void botoes_letras() {
@@ -296,7 +302,5 @@ public class Forca extends Tela{
 		});
 		btnNewButton_2_3_2.setBounds(380, 326, 55, 25);
 		this.get_tela().add(btnNewButton_2_3_2);
-
-	}
-	
+	}	
 }

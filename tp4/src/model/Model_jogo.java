@@ -10,14 +10,12 @@ import java.io.FileReader;
 import java.io.LineNumberReader;
 import java.util.Random;
 import java.util.Scanner;
-
 import javax.swing.JLabel;
-
 import control.*;
 import view.*;
 
 public class Model_jogo {
-	private static ArrayList<String> lista_palavras_chave = new ArrayList<String>(); 
+	private static ArrayList<String> lista_palavras_chave = new ArrayList<String>();
 
 	private static ArrayList<String> hall_da_fama;
 	private static String palavra_da_vez;
@@ -26,6 +24,7 @@ public class Model_jogo {
 	public static Jogador j = new Jogador();
 	private static ArrayList<Integer>index_list = new ArrayList<Integer>();
 	private static ArrayList<JLabel>label_list = new ArrayList<JLabel>();
+	private static JLabel label_vidas = new JLabel();
 	
 	public static void reset_j_lives() {
 		j.vidas = 5;
@@ -47,14 +46,15 @@ public class Model_jogo {
 //		if (letra ==)
 //		return lista;
 //	}
-	
-	
-	
+
 	public static void acerto() {
 		
 	}
 	
 	public static void erro() {
+		j.vidas = j.vidas - 1;
+		label_vidas.setText(String.valueOf(j.vidas));
+		
 		
 	}
 	
@@ -73,12 +73,11 @@ public class Model_jogo {
 	public static void add_palavra(String palavra) {
 		
 	}
-//	
-//	public static int calcular_score() {
-//		int x;
-//		
-//		return x;
-//	}
+	
+	public static int calcular_score() {
+		int x;
+		return 1;
+	}
 
 	public static int tamanho_lista_palavras() throws Exception {
 		LineNumberReader leitorLinhas = new LineNumberReader(new FileReader(DATABASE));
@@ -97,7 +96,7 @@ public class Model_jogo {
 		lista_palavras_chave.clear();
 		while ((linhaLida = leitorArquivo.readLine()) != null) { 
 			lista_palavras_chave.add(linhaLida);
-//			System.out.println(linhaLida+"\n");
+
 			
 		}
 		leitorArquivo.close();
@@ -112,7 +111,7 @@ public class Model_jogo {
 		String palavra_sorteada = lista_palavras_chave.get(indiceSorteado);
 		lista_palavras_chave.remove(indiceSorteado);
 		palavra_da_vez = palavra_sorteada;
-//		Controller_jogo.mostrar_palavra();
+
 	}
 	
 
@@ -129,7 +128,7 @@ public class Model_jogo {
 			}
 		}
 		if (index_list.size()==0) {
-//			perder vida
+			erro();
 		}else {
 			Controller_jogo.mostrar_letra(letra, index_list);
 		}
@@ -142,6 +141,10 @@ public class Model_jogo {
 	
 	public static ArrayList<JLabel> get_lista_label(){
 		return label_list;
+	}
+	
+	public static JLabel get_label_vidas() {
+		return label_vidas;
 	}
 	
 }

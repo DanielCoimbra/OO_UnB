@@ -43,6 +43,7 @@ public class Game_over extends Tela{
 	
 	public void clica_botao_restart() throws Exception {
 		this.get_tela().setVisible(false);
+		Controller_jogo.resetar_lista();
 		Controller_jogo.navegar_tela(1);
 	}
 	
