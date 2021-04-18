@@ -79,15 +79,12 @@ public class Model_jogo {
 	public static void perdeu() throws Exception {
 		Controller_jogo.perdeu();
 	}
-	
-	public static void add_palavra(String palavra) {
-		
-	}
-	
-	public static int calcular_score() {
-		int x;
-		return 1;
-	}
+
+//	
+//	public static int calcular_score() {
+//		int x;
+//		return 1;
+//	}
 
 	public static int tamanho_lista_palavras() throws Exception {
 		LineNumberReader leitorLinhas = new LineNumberReader(new FileReader(DATABASE));

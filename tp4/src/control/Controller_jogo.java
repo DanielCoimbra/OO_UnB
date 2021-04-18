@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 
 import model.*;
@@ -11,25 +10,15 @@ import view.*;
 
 public class Controller_jogo {
 	
+	public static void start() {
+		Tela tela = new Menu_inicial();
+	}
+	
 	
 	public static void resetar_lista() throws Exception {
 		Model_jogo.reseta_lista_palavras();
 	}
-	
-//	public static void rodada(char letra) {
-////		int estado = 4;
-////		int estado = Model_jogo.checa_estado();
-////		if (estado == 0) {
-//			
-////		}else if (estado == 1) {
-//			
-////		}else if (estado == 2){
-//			
-//		Model_jogo.sortear_palavra();
-//		
-//			
-////		}
-//	}
+
 	
 	public static void rodada(char letra) {
 		checar_letra(letra);
