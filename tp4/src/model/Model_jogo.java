@@ -13,6 +13,8 @@ import java.io.LineNumberReader;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import control.*;
 import view.Forca;
 
@@ -169,9 +171,9 @@ public class Model_jogo {
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    bw.newLine();
 		    
-		    String algo="";
-		    Forca.get_f().
-//		    bw.write(algo);
+		    String algo=JOptionPane.showInputDialog(Forca.get_f(), "Enter value");
+//		    Forca.get_f().
+		    bw.write(algo.toUpperCase());
 		    bw.close();
 	}
 	
