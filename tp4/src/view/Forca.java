@@ -6,13 +6,13 @@ import java.awt.event.ActionListener;
 import control.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import java.util.ArrayList;
 
 public class Forca extends Tela{
 
 	public Forca() throws Exception {
 		botoes_letras();
 		Controller_jogo.sortear();
+		Controller_jogo.reseta_vida();
 		labels(Controller_jogo.palavra_da_vez().length());
 
 	}
@@ -23,9 +23,7 @@ public class Forca extends Tela{
 		this.get_tela().add(Controller_jogo.get_label_vidas());
 	}
 	
-	public void muda_vidas() {
-		Controller_jogo.get_label_vidas().setText(String.valueOf(Controller_jogo.get_vidas()));
-	}
+	
 	
 	public void labels(int tamanho_palavra) {
 		Controller_jogo.get_lista_label().clear();

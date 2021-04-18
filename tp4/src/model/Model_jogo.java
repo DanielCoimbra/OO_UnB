@@ -51,12 +51,15 @@ public class Model_jogo {
 		
 	}
 	
-	public static void erro() {
-		j.vidas = j.vidas - 1;
-		label_vidas.setText(String.valueOf(j.vidas));
-		
-		
-	}
+	public static void erro(){
+		j.vidas--;
+		if (j.vidas < 0) {
+			try {perdeu();} catch (Exception e) {}
+		}else {
+			}
+			System.out.println(j.vidas);
+			Controller_jogo.muda_vidas();
+		}
 	
 	public static void ganhou_rodada(){
 		
@@ -66,8 +69,8 @@ public class Model_jogo {
 		
 	}
 	
-	public static void perdeu() {
-		
+	public static void perdeu() throws Exception {
+		Controller_jogo.navegar_tela(2);
 	}
 	
 	public static void add_palavra(String palavra) {
@@ -120,7 +123,7 @@ public class Model_jogo {
 		return palavra_da_vez;
 	}
 	
-	public static void checar_letra(char letra) {
+	public static void checar_letra(char letra){
 		index_list.clear();
 		for(int i=0;i<p_da_vez().length(); i++) {
 			if (p_da_vez().charAt(i)==letra) {
@@ -128,7 +131,9 @@ public class Model_jogo {
 			}
 		}
 		if (index_list.size()==0) {
-			erro();
+			try {
+				erro();
+			} catch (Exception e) {}
 		}else {
 			Controller_jogo.mostrar_letra(letra, index_list);
 		}

@@ -97,5 +97,12 @@ public class Controller_jogo {
 		return Model_jogo.get_label_vidas();
 	}
 	
+	public static void muda_vidas() {
+		System.out.println("errrou");
+		get_label_vidas().setText(String.valueOf(get_vidas()));
+//				String.valueOf(get_vidas()));
+	}
+
+	
 //	public 
 }
