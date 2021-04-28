@@ -16,10 +16,7 @@ public class Jogador {
 	public void set_name(String name) {
 		player_name= name;
 	}
-	
-	public void hall_da_fama() {
-		
-	}
+
 	public void reset_lives() {
 		
 	}
