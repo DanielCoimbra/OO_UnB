@@ -70,6 +70,7 @@ public class Model_jogo {
 	public static void ganhou(){
 		Controller_jogo.ganhou_rodada();
 		estado="ganhou";
+
 	}
 	
 	public static void zerou() {
@@ -139,7 +140,8 @@ public class Model_jogo {
 			if (p_da_vez().charAt(i)==letra) {
 				acerto(i);
 				if (estado == "ganhou"){//*******************
-//*************** mudar o bug visual Label ao trocar tela Forca
+					estado="";
+					return;
 
 				}
 			}
