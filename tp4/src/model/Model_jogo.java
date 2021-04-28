@@ -21,7 +21,6 @@ import view.Forca;
 public class Model_jogo {
 	private static ArrayList<String> lista_palavras_chave = new ArrayList<String>();
 	public static ArrayList<Character> utilizadas = new ArrayList<Character>();
-	private static ArrayList<String> hall_da_fama;
 	private static String palavra_da_vez;
 	private static String estado;
 	private static String DATABASE="Lista.txt";
@@ -40,14 +39,6 @@ public class Model_jogo {
 		return j.vidas;
 	}
 
-	
-//	public ArrayList<Integer> checa_letra(String letra, String palavra){
-//		ArrayList<Integer> lista;
-//		
-//		if (letra ==)
-//		return lista;
-//	}
-
 	public static void acerto(int i) {
 		contador_acertos++;
 		
@@ -55,16 +46,13 @@ public class Model_jogo {
 		if (contador_acertos==palavra_da_vez.length()) {
 			ganhou();
 		}
-		
 	}
 	
 	public static void erro(){
 		j.vidas--;
 		if (j.vidas < 0) {
 			try {perdeu();} catch (Exception e) {}
-		}else {
-			}
-//			System.out.println(j.vidas);
+		}else
 			Controller_jogo.muda_vidas();
 		}
 	
@@ -75,19 +63,9 @@ public class Model_jogo {
 
 	}
 	
-	public static void zerou() {
-		
-	}
-	
 	public static void perdeu() throws Exception {
 		Controller_jogo.perdeu();
 	}
-
-//	
-//	public static int calcular_score() {
-//		int x;
-//		return 1;
-//	}
 
 	public static int tamanho_lista_palavras() throws Exception {
 		LineNumberReader leitorLinhas = new LineNumberReader(new FileReader(DATABASE));
@@ -105,16 +83,11 @@ public class Model_jogo {
 		
 		lista_palavras_chave.clear();
 		
-		
-		
 		while ((linhaLida = leitorArquivo.readLine()) != null) { 
-			lista_palavras_chave.add(linhaLida);
-
-			
+			lista_palavras_chave.add(linhaLida);			
 		}
 		leitorArquivo.close();
 
-		
 	}
 	
 	public static void sortear_palavra() {
@@ -173,7 +146,6 @@ public class Model_jogo {
 		    bw.newLine();
 		    
 		    String algo=JOptionPane.showInputDialog(Forca.get_f(), "Enter value");
-//		    Forca.get_f().
 		    bw.write(algo.toUpperCase());
 		    bw.close();
 	}
@@ -195,10 +167,4 @@ public class Model_jogo {
 		j.score = 0;
 	}
 		
-	
-	
-//	public static void checa_estado() {
-//		 
-//	}
-	
 }
