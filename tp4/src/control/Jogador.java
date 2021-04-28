@@ -2,11 +2,11 @@ package control;
 
 public class Jogador {
 	private String player_name;
-	private int player_score;
+	public int score;
 	public int vidas=5;
 	
 	public Jogador() {
-		player_score = 0;
+		
 	}
 	
 	public String get_name() {
@@ -25,7 +25,7 @@ public class Jogador {
 	}
 	
 	public int get_score() {
-		return this.player_score;
+		return this.score;
 	}
 	
 	public void perder_1_de_vida(){
@@ -34,4 +34,5 @@ public class Jogador {
 	public int vida() {
 		return this.vidas;
 	}
+
 }

@@ -123,4 +123,11 @@ public class Controller_jogo {
 		Forca.get_f().utilizadas(letra);
 		
 	}
+	
+	public static int get_score() {
+		return Model_jogo.get_score();
+	}
+	public static void reset_score() {
+		Model_jogo.reset_score();
+	}
 }

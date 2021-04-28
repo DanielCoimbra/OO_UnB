@@ -17,7 +17,7 @@ public class Game_over extends Tela{
 		this.get_tela().setName("Game Over");
 		botao_restart();
 		death();
-		
+		mostrar_score();
 	}
 	
 	
@@ -45,30 +45,19 @@ public class Game_over extends Tela{
 		this.get_tela().setVisible(false);
 		Controller_jogo.resetar_lista();
 		Controller_jogo.navegar_tela(1);
+		Controller_jogo.reset_score();
 	}
 	
 	public void death() {
 		JLabel lblTeste = new JLabel("WASTED bonequinho is dead");
 		lblTeste.setBounds(189, 126, 232, 105);
 		this.get_tela().add(lblTeste);
-//		ImageIcon image = new ImageIcon("/images/forca_-1_vida.png");
-//		JLabel label= new JLabel();
-//		label.setIcon(image);
-//		label.setLocation(0, 45);
-//		this.get_tela().add(label);
-//		JPanel contentPane = new JPanel();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		contentPane.setLayout(null);
-//		this.get_tela().setContentPane(contentPane);
-//		JPanel p = new JPanel();
-//		p.setBackground(Color.CYAN);
-//		p.setPreferredSize(new Dimension(300,400));
-//		JLabel label = new JLabel();
-//		label.setText("Game over\nbonequinho is dead");
-//		p.add(label);
-//		this.get_tela().getContentPane().add(p);
-		
-		
-		
 	}
+		
+	public void mostrar_score() {
+		JLabel lblTeste = new JLabel("Você fez "+Integer.toString(Controller_jogo.get_score())+ " pontos");
+		lblTeste.setBounds(189, 0, 232, 105);
+		this.get_tela().add(lblTeste);;
+	}
+		
 }

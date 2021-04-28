@@ -50,6 +50,7 @@ public class Model_jogo {
 
 	public static void acerto(int i) {
 		contador_acertos++;
+		
 		index_list.add(i);
 		if (contador_acertos==palavra_da_vez.length()) {
 			ganhou();
@@ -69,6 +70,7 @@ public class Model_jogo {
 	
 	public static void ganhou(){
 		Controller_jogo.ganhou_rodada();
+		j.score++;
 		estado="ganhou";
 
 	}
@@ -183,6 +185,14 @@ public class Model_jogo {
 			}
 		}
 		return false;
+	}
+	
+	public static int get_score() {
+		return j.score;
+	}
+	
+	public static void reset_score() {
+		j.score = 0;
 	}
 		
 	

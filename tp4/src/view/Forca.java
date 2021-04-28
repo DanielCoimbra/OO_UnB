@@ -57,10 +57,10 @@ public class Forca extends Tela{
 
 	    doc.insertString(doc.getLength(), "Some Text", style);
 		
-		p.setText(""+Controller_jogo.get_vidas());
+		p.setText("Vidas "+Controller_jogo.get_vidas());
 
 		
-		p.setBounds(500,12, 40,40);
+		p.setBounds(420,12, 120,40);
 		
 		this.get_tela().add(p);
 	}
