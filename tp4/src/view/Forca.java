@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import control.*;
-import model.Model_jogo;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,10 +17,17 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 
-
+/**
+ * Classe da Tela de Jogo da Forca. Interface para clicar nas letras, ver vidas, jogar o jogo. 
+ * @author Daniel Coimbra
+ * @versão 1.0 (Abril 2021)
+ */
 public class Forca extends Tela{
 	private static Forca f;
-	
+	/** construtor da classe
+	 * 
+	 * @throws Exception
+	 */
 	public Forca() throws Exception {
 		f= this;
 		botoes_letras();
@@ -31,21 +37,33 @@ public class Forca extends Tela{
 		mostra_vida(5);
 
 	}
-	
+	/**
+	 * da acesso ao JFrame atual
+	 * @return forca atual
+	 */
 	public static Forca get_f(){
 		return f;
 	}
-	
+	/**
+	 * leva o jogador a tela Game Over
+	 * @throws Exception
+	 */
 	public static void perdeu() throws Exception {
 		f.get_tela().setVisible(false);
 		Controller_jogo.navegar_tela(2);
 	}
-	
+	/**
+	 * Leva o jogador para a próxima rodada
+	 */
 	public static void proxima_rodada() {
 		f.get_tela().setVisible(false);
 		try {Controller_jogo.navegar_tela(1);} catch (Exception e) {}
 	}
-
+	/**
+	 * Mostra o número de vidas que o jogador tem na rodada
+	 * @param vida
+	 * @throws BadLocationException
+	 */
 	public void mostra_vida(int vida) throws BadLocationException {
 		JTextPane p = new JTextPane();
 		StyledDocument doc = (StyledDocument) p.getDocument();
@@ -65,8 +83,11 @@ public class Forca extends Tela{
 		this.get_tela().add(p);
 	}
 	
+	/**
+	 * Mostra as letras já clicacadas na rodada
+	 * @param letra
+	 */
 	public void utilizadas(char letra) {
-//		if(!Controller_jogo.checa_utilizadas(letra)) { return;}
 		
 		JTextPane p = new JTextPane();
 		StyledDocument doc = (StyledDocument) p.getDocument();
@@ -78,7 +99,7 @@ public class Forca extends Tela{
 
 	    try {doc.insertString(doc.getLength(), "Some Text", style);} catch (BadLocationException e) {}
 		
-		p.setText(Model_jogo.utilizadas.toString());
+		p.setText(Controller_jogo.utilizadas().toString());
 
 		p.setBounds(130,0, 200,40);
 		
@@ -86,14 +107,9 @@ public class Forca extends Tela{
 		
 	}
 	
-//	public void _vidas() {
-//		Controller_jogo.get_label_vidas().setText(String.valueOf(Controller_jogo.get_vidas()));
-//		Controller_jogo.get_label_vidas().setBounds(500,12, 27,25);
-//		this.get_tela().add(Controller_jogo.get_label_vidas());
-//	}
-	
-	
-	
+	/**
+	 * Coloca os underlines quando a palavra é sorteada
+	 */
 	public void labels(int tamanho_palavra) {
 		Controller_jogo.get_lista_label().clear();
 		int counter = 10, distancia = 15, altura = 150;
@@ -112,18 +128,10 @@ public class Forca extends Tela{
 		}
 		
 	}
-	
-//	public void change_labels( char letra, ArrayList<Integer> index_list) {
-//		for(int i = 0; i < index_list.size(); i++) {
-//			Controller_jogo.get_lista_label().get(index_list.get(i)).setText(""+letra);
-//		}
-//	}
-//	
-	public String botao_dica() {
-		String dica = "";
-		return dica;
-	}
-	
+
+	/**
+	 * Coloca os botões de teclado do jogador
+	 */
 	public void botoes_letras() {
 		
 		JButton btnNewButton = new JButton("A");
