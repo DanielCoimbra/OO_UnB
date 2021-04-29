@@ -20,14 +20,6 @@ public class Controller_jogo {
 	}
 
 	
-	public static void rodada(char letra) {
-		checar_letra(letra);
-	}
-	
-	public static boolean checa_utilizadas(char letra) {
-		return Model_jogo.checa_utilizadas(letra);
-	}
-	
 	
 	public static void ganhou_rodada() {
 		Forca.proxima_rodada();
@@ -129,5 +121,9 @@ public class Controller_jogo {
 	}
 	public static void reset_score() {
 		Model_jogo.reset_score();
+	}
+	
+	public static ArrayList<Character> utilizadas(){
+		return Model_jogo.utilizadas;
 	}
 }
